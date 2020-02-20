@@ -1,0 +1,72 @@
+.card {
+    width: 300px;
+    min-height: 334.04px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    margin: 30px;
+    margin-top: 0px;
+}
+
+.media {
+    height: 140px;
+    background-color: #91A3EB;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.backgroundtitle {
+    height: 45.43px;
+    background: #405196;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 1.7;
+    color: #FFFFFF;
+}
+
+.NoSTI{
+    background: #D83335;
+    color: white;
+}
+
+.STI{
+  background: green;
+  color: white;
+}
+.column {
+    float: left;
+    width: 25%;
+  }
+  
+  /* Clear floats after the columns */
+  .row {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .container{
+      max-width: 1250px;
+    float: right;
+    position: relative;
+    margin: 50px;
+  }
+
+  .line {
+    position: absolute;
+    width: 239px;
+    height: 1px;
+    left: 540px;
+    top: 457px;
+    
+    border: 1px solid #E5E5E5;
+  }
+
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    padding: 0;
+}

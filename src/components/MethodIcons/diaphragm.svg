@@ -1,0 +1,22 @@
+<svg width="173" height="107" viewBox="0 0 173 107" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M34.4763 64.1011H140.03C137.558 37.1265 114.873 16 87.2532 16C59.6337 16 36.9486 37.1265 34.4763 64.1011Z" fill="#FFDDD7"/>
+<rect x="20.2241" y="64.1011" width="132.723" height="18.706" rx="9.35299" fill="url(#paint0_linear)"/>
+</g>
+<defs>
+<filter id="filter0_d" x="0.224121" y="0" width="172.723" height="106.807" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="10"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear" x1="86.5858" y1="64.1011" x2="86.5858" y2="82.8071" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFC9BF"/>
+<stop offset="0.140625" stop-color="#FFCEC5"/>
+<stop offset="0.526853" stop-color="#FFDDD7"/>
+</linearGradient>
+</defs>
+</svg>

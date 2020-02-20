@@ -1,0 +1,24 @@
+.background{
+    position: absolute;
+    width: 400px;
+    height: 200%;    
+    float: left;
+    padding: 50px;
+    background: #E5E5E5;
+}
+
+.title{
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 38px;
+text-align: center;
+
+color: rgba(0, 0, 0, 0.8);
+}
+
+.button{
+    background-color: #405196;
+    color: white;
+}
+

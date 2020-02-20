@@ -1,0 +1,8 @@
+.background{
+    position: absolute;
+    min-width: 100%;
+    min-height: 300vh;    
+    float: left;
+    padding: 50px;
+    background:white;
+}
