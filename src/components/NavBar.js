@@ -8,7 +8,7 @@ const NavBar = () => {
         <div>
             <AppBar position="static" style={{backgroundColor: "#405196"}}>
                 <Toolbar>
-                    <Typography style={{fontSize: "30px"}} variant="title">
+                    <Typography style={{fontSize: "30px"}} >
                         Which Contraceptive?
                     </Typography>
                 </Toolbar>

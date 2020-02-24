@@ -13,7 +13,8 @@ function MethodCard({method, index, responses}) {
   let discontinue;
   if (responses.noHormones === 1) {
     hormone = <Typography variant="h6" color="textPrimary" component="p" style={{paddingBottom: "10px"}}>
-                <hr/> {method.hormonecheck} &nbsp; {method.hormones}
+                <hr/> 
+                {method.hormonecheck} &nbsp; {method.hormones}
       </Typography>} else {  }
   if (responses.consistencyperiods === 1) {
     consistencyperiods = <Typography variant="h6" color="textPrimary" component="p" style={{paddingBottom: "10px"}}>
@@ -41,7 +42,7 @@ function MethodCard({method, index, responses}) {
 
           return (
     
-            <div iv className={styles.card}>
+            <div  className={styles.card}>
             <CardActionArea>
               <CardMedia className={styles.media}>
                 {method.icon}

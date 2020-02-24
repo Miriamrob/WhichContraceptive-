@@ -23,26 +23,28 @@ import Cross from'./components/MethodIcons/cross.png';
 import styles from './components/MethodCard.module.css'; 
 import MultipleChoice from './components/multiStepForm/MultipleChoice';
 import Explanation from './components/multiStepForm/Explanation';
-import WeightPreferences from './components/multiStepForm/WeightPreferences';
-import { formatMs } from '@material-ui/core';
 
 function App() {
-  const [responses, setResponses] = useState([
-   { effectiveness: '',
-    noHormones:'',
-    STI:'',
-    remember: '',
-    consistencyperiods:'',
-    menstrualflow: '',
-    itprivate:'',
-    discontinue: '',
-  },
-]);
+  const [responses, setResponses] = useState([]);
 
-function addResponse(effectiveness, noHormones, STI, remember, consistencyperiods, menstrualflow, itprivate, discontinue) {
-  setResponses( {effectiveness, noHormones, STI, remember, consistencyperiods, menstrualflow, itprivate, discontinue,});
-};
-const [weighting, setWeighting] = useState([
+function addResponseeffectiveness(effectiveness) {
+  setResponses( {...responses, effectiveness});};
+function addResponsenoHormones(noHormones) {
+  setResponses( {...responses, noHormones,});};
+function addResponseSTI( STI) {
+  setResponses( {...responses, STI,});};
+function addResponseremember(remember) {
+  setResponses( {...responses, remember,});};
+function addResponseconsistencyperiods(consistencyperiods) {
+  setResponses( {...responses, consistencyperiods,});};
+function addResponsemenstrualflow( menstrualflow) {
+  setResponses( {...responses, menstrualflow,});};
+function addResponseitprivate( itprivate) {
+  setResponses( {...responses,  itprivate,});};
+function addResponsediscontinue( discontinue) {
+  setResponses( {...responses, discontinue,});};
+
+  const [weighting, setWeighting] = useState([
   {weighteffectiveness: 0,
   weightnoHormones: 0,
   weightSTI: 0,
@@ -57,7 +59,7 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
   setWeighting({weighteffectiveness, weightnoHormones, weightSTI, weightremember, weightconsistencyperiods, weightmenstrualflow, weightitprivate, weigthdiscontinue});
   };
 
-  const [methods, setMethods] = useState([
+  const [methods] = useState([
       {
           title: "IUD",
           icon: <img  src={IUD}/>,
@@ -483,22 +485,44 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
     })};
       
     
-    const [finalscores, setFinalscores] = useState(
-      {
-        finalIUS: '',
-      }
-    );
+   
 
     function checkingScores({methods, table}){
 
       var i = 0;
       for (i=0; i<methods.length; i++){
         var this_test = methods[i].sortEffective * table.normalizedweighteffectiveness
-        + methods[i].sortHormones * table.normalizedweightnoHormones;
+        
+        if (table.normalizedweightnoHormones > 0) {
+          this_test += methods[i].sortHormones * table.normalizedweightnoHormones;}
+
+        if (table.normalizedweightSTI > 0) {
+          this_test += methods[i].sortSTI * table.normalizedweightSTI;}
+
+        if (table.normalizedweightconsistencyperiods > 0) {
+          this_test += methods[i].sortConsistencyperiods * table.normalizedweightconsistencyperiods;}
+
+        if (table.normalizedweigthdiscontinue > 0) {
+          this_test += methods[i].sortDiscontinue * table.normalizedweigthdiscontinue;}
+
+        if (table.normalizedweightitprivate > 0) {
+          this_test += methods[i].sortItprivate * table.normalizedweightitprivate;}  
+
+        if (table.normalizedweightremember > 0) {
+                this_test += methods[i].sortResponses * table.normalizedweightremember;} 
+
+        if (table.normalizedweightmenstrualflow > 0) {
+                  this_test += methods[i].sortMenstrualflow * table.normalizedweightmenstrualflow;}  
+
   
-        methods[i].finalScore = this_test
+        methods[i].finalScore = this_test;
       };
     };
+    console.log('jetooo')
+
+    console.log(methods[1].finalScore)
+    console.log(methods.title)
+
 
     const [steps, setSteps] = useState([ { stepss: 0, }, ]);
     function addSteps(stepss) {
@@ -510,13 +534,40 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
         leftside = <Explanation addSteps={addSteps}/>;
         break;
       case 1:
-          leftside =  <MultipleChoice addResponse={addResponse} addSortResponse = {addSortResponse} addSteps={addSteps} addWeighting ={addWeighting}/>;
+          leftside =  <MultipleChoice 
+          addResponseeffectiveness={addResponseeffectiveness} 
+          addResponsenoHormones={addResponsenoHormones} 
+          addResponseSTI={addResponseSTI} 
+          addResponseremember={addResponseremember} 
+          addResponseconsistencyperiods={addResponseconsistencyperiods} 
+          addResponsemenstrualflow={addResponsemenstrualflow} 
+          addResponseitprivate={addResponseitprivate} 
+          addResponsediscontinue={addResponsediscontinue} 
+          addSortResponse = {addSortResponse}
+           addSteps={addSteps} 
+           addWeighting ={addWeighting}/>;
+          
           break;
       case 2:
-          leftside = <Weightings addSteps={addSteps} responses={responses} addWeighting ={addWeighting}  />;
+          leftside = <Weightings addSteps={addSteps} 
+                                responses={responses} 
+                                addWeighting ={addWeighting} 
+                                table={table} 
+                                normalize={normalize} 
+                                weighting={weighting} 
+                                checkingScores={checkingScores}
+                                methods={methods} />;
           break;
       case 3:
-    leftside = <ResultsPage table={table} finalscores={finalscores} normalize={normalize} weighting={weighting} checkingScores={checkingScores} table={table} methods ={methods}/>
+    leftside = <ResultsPage table={table} 
+                            normalize={normalize} 
+                            weighting={weighting} 
+                            checkingScores={checkingScores} 
+                            table={table} 
+                            methods ={methods}
+                            methodsList={methodsList}
+                            setMethodsList={setMethodsList}
+                            responses = {responses}/>
           break;   
       default:
         leftside = <Explanation addSteps={addSteps} addWeighting ={addWeighting}/>;
@@ -538,7 +589,7 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
        
           <div className={styles.row} >
             {methodsList.map((method, index) => (
-              <div className={styles.column}>
+              <div className={styles.column } key={index}>
               <MethodCard key={index} index={index} method={method} responses={responses}/>
               </div>
             ))}

@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 
 
 
-function Weightings({addSteps, responses, addWeighting}) {
+function Weightings({addSteps, responses, addWeighting, table, normalize, weighting, checkingScores, methods}) {
     const [weighteffectiveness, setWeightEffectiveness] = useState(0);
     const [weightSTI, setWeightSTI] = useState(0);
     const [weightremember, setWeightremember] = useState(0);
@@ -26,10 +26,11 @@ function Weightings({addSteps, responses, addWeighting}) {
         e.preventDefault();
         addSteps(stepss);
         addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightremember, weightconsistencyperiods, weightmenstrualflow, weightitprivate, weigthdiscontinue );
+        normalize(weighting);
+        checkingScores({methods, table});
+        
     };
-    const handleChange = (e) =>{
-        let t = 1;
-       };
+ 
     
     let hormone;
     let effective;
