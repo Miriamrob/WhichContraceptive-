@@ -17,11 +17,13 @@ function Explanation({addSteps}) {
               <Typography variant="h4" className={styles.title} gutterBottom>
               Welcome to Which Contraception! 
             </Typography>
-              <Typography variant="subtitle1" >
+              <Typography variant="h5" >
               <br />
               <b>The tool that helps you find which method works best for you. Take this 2 step quiz to find what contraceptives are the most fitting for you.</b>
+              
+
               </Typography>
-              <Typography variant="subtitle1" component="p">
+              <Typography variant="h5" component="p">
 
                 <br />
                 You will be able to see all the available methods on the right and these will reorder themselves based on your answers. However, you won’t be able to calculate your final results until you complete all the steps

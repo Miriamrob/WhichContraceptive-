@@ -66,13 +66,11 @@ function MultipleChoice({addResponseeffectiveness,addResponsenoHormones, addResp
     };
         return (
             <div  className={styles.background}>
+                 <Typography variant="h5"  gutterBottom>
+                Step 1: What are you looking for in a contraceptive method? </Typography>
         <FormControl component="fieldset" style= {{float: "left", textAlign: "left"}} >
 
-                        <Typography variant="subtitle1" > <b> How important is the efficacy of the method? </b></Typography>
-                        <RadioGroup aria-label="effectiveness" name="effectiveness"  >
-                        <FormControlLabel value = "1" control={<Radio  color="primary"  />}  onChange={funeffectiveness}  label="I want the method to be the best at preventing pregnancy" />
-                        <FormControlLabel value="0.5" control={<Radio color="primary"/>}   label="I want it to be good at preventing pregnancy but I’m willing to compromise depending on other factors" />
-                        </RadioGroup>
+
 
                         <br/>
                         <Typography variant="subtitle1" > <b> Do you want a method without hormones? </b></Typography>

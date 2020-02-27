@@ -3,10 +3,16 @@ import styles from '../Results.module.css';
 import MethodCard from '../MethodCard';
 
 function ResultsPage({table, normalize, weighting, checkingScores, methods, methodsList, responses, setMethodsList}){
-  
-     console.log('methodsList')
+    const handleSubmit = (e) =>{
+         checkingScores({methods, table});
+     };
+     const calculating = (e) =>{
+        checkingScores({methods, table});
+    };
 
-     console.log(methods.finalScore)
+     console.log('methodsList[1].finalScore')
+
+     console.log(methodsList[1].finalScore)
      const sortBy = () => {
         const sorted = [...methodsList].sort((a, b) => {
           return b.methodsList.finalScore - a.methodsList.finalScore;
@@ -14,7 +20,8 @@ function ResultsPage({table, normalize, weighting, checkingScores, methods, meth
          setMethodsList(sorted);
       };    
  return(
-    <div  className={styles.background}>
+    <div  onLoad={handleSubmit} className={styles.background}>
+<p onClick={calculating}>helloo</p>
 <p onClick={sortBy}>onclick</p>
 {methodsList.map((method, index) => (
               <div className={styles.column } key={index}>

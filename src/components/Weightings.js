@@ -17,9 +17,9 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
     const [weightnoHormones, setWeightnoHormones] = useState(0);
     const stepss= 3;
     const [value, setValue] = useState();
-    const handleChanges = (e, newValue) => {
+   
+    const handleChanges = (e) => {
         e.preventDefault();     
-        setValue(newValue);
         addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightremember, weightconsistencyperiods, weightmenstrualflow, weightitprivate, weigthdiscontinue );
       };
     const handleSubmit = (e) =>{
@@ -27,7 +27,6 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
         addSteps(stepss);
         addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightremember, weightconsistencyperiods, weightmenstrualflow, weightitprivate, weigthdiscontinue );
         normalize(weighting);
-        checkingScores({methods, table});
         
     };
  
@@ -40,46 +39,53 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
     let menstrualflow;
     let itprivate;
     let discontinue;
-   if (responses.effectiveness === 1) {
-            effective =                 <div>
-               <Typography id="discrete-slider" gutterBottom>
-                    Effectiveness <br/><br/><br/>
+    const marks = [
+        {
+          value: 0,
+          label: '0',
+        },
+        {
+          value: 5,
+          label: '5',
+        },
+      ];
+   
+            effective = <div>
+               <Typography  variant="subtitle1" style= {{float: "left", textAlign: "left"}}>
+                   <b>Being good at preventing pregnancy</b>  <br/><br/><br/>
+                </Typography>
+                <Slider
+                defaultValue={0}
+                onChange={(event, newValue) => setWeightEffectiveness(newValue)}
+                onChangeCommitted={handleChanges}
+                step={1}
+                min={0}
+                max={5}
+                valueLabelDisplay="on"
+                value={value} 
+                marks={marks}  
+                />
+               <br/><br/><br/> <br/>
+            </div>;
+            
+
+        
+        if (responses.noHormones === 1) {
+            hormone =                 <div>
+               <Typography  variant="subtitle1" style= {{float: "left", textAlign: "left"}}>
+                    <b>Have no Hormones</b> <br/><br/><br/>
                 </Typography>
                 <Slider
                     defaultValue={0}
-                    aria-labelledby="discrete-slider"
-                    valueLabelDisplay="auto"
+                    onChange={(event, newValue) => setWeightnoHormones(newValue)}
+                    onChangeCommitted={handleChanges}
                     step={1}
                     min={0}
                     max={5}
                     valueLabelDisplay="on"
-                    value={value}
-                    onChange={handleChanges}
-                    onClick={(e) =>  setWeightEffectiveness(value)}
-                    onDrag={(e) =>  setWeightEffectiveness(value)}
- 
-                />
-               <br/><br/><br/> <br/>
-            </div>
-            } else {  };
-
-        if (responses.noHormones === 1) {
-            hormone =                 <div>
-               <Typography id="discrete-slider" gutterBottom>
-                    Hormones <br/><br/><br/>
-                </Typography>
-                <Slider
-                    defaultValue={3}
-                    aria-labelledby="discrete-slider"
-                    valueLabelDisplay="auto"
-                    step={1}
-                    min={0}
-                    max={5}
-                    valueLabelDisplay="on"
-                    value={value}
-                    onChange={handleChanges}
-                    onClick={(e) => setWeightnoHormones(value)}
-                
+                    value={value}  
+                    marks={marks}  
+              
                 />
                <br/><br/><br/> <br/>
             </div>
@@ -88,20 +94,20 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
 
                 if (responses.STI === 1) {
                     STD =                 <div>
-                       <Typography id="discrete-slider" gutterBottom>
-                       STI <br/><br/><br/>
+                       <Typography variant="subtitle1" style= {{float: "left", textAlign: "left"}}>
+                       <b>Prevent from STIs/STDs</b> <br/><br/><br/>
                         </Typography>
                         <Slider
-                            defaultValue={3}
-                            aria-labelledby="discrete-slider"
-                            valueLabelDisplay="auto"
-                            step={1}
-                            min={0}
-                            max={5}
-                            valueLabelDisplay="on"
-                            value={value}
-                            onChange={handleChanges}
-                            onClick={(e) => setWeightSTI(value)}
+                                        defaultValue={0}
+                                        onChange={(event, newValue) => setWeightSTI(newValue)}
+                                        onChangeCommitted={handleChanges}
+                                        step={1}
+                                        min={0}
+                                        max={5}
+                                        valueLabelDisplay="on"
+                                        value={value}   
+                                        marks={marks}  
+
                         />
                        <br/><br/><br/> <br/>
                     </div>
@@ -109,20 +115,20 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
            
                     if (responses.remember === 1) {
                         remember =                 <div>
-                           <Typography id="discrete-slider" gutterBottom>
-                           remember <br/><br/><br/>
+                           <Typography variant="subtitle1" style= {{float: "left", textAlign: "left"}}>
+                           <b>Is easy to remember</b> <br/><br/><br/>
                             </Typography>
                             <Slider
-                                defaultValue={3}
-                                aria-labelledby="discrete-slider"
-                                valueLabelDisplay="auto"
+                                defaultValue={0}
+                                onChange={(event, newValue) => setWeightremember(newValue)}
+                                onChangeCommitted={handleChanges}
                                 step={1}
                                 min={0}
                                 max={5}
                                 valueLabelDisplay="on"
-                                value={value}
-                                onChange={handleChanges}
-                                onClick={(e) => setWeightremember(value)}
+                                value={value}       
+                                marks={marks}  
+
                             />
                            <br/><br/><br/> <br/>
                         </div>
@@ -130,20 +136,20 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
 
                         if (responses.consistencyperiods === 1) {
                             consistencyperiods =                 <div>
-                               <Typography id="discrete-slider" gutterBottom>
-                               consistencyperiods <br/><br/><br/>
+                               <Typography variant="subtitle1" style= {{float: "left", textAlign: "left"}}>
+                               <b>Makes/keeps periods regular</b> <br/><br/><br/>
                                 </Typography>
                                 <Slider
-                                    defaultValue={3}
-                                    aria-labelledby="discrete-slider"
-                                    valueLabelDisplay="auto"
+                                    defaultValue={0}
+                                    onChange={(event, newValue) => setWeightconsistencyperiods(newValue)}
+                                    onChangeCommitted={handleChanges}
                                     step={1}
                                     min={0}
                                     max={5}
                                     valueLabelDisplay="on"
-                                    value={value}
-                                    onChange={handleChanges}
-                                    onClick={(e) => setWeightconsistencyperiods(value)}
+                                    value={value}   
+                                    marks={marks}  
+
                                 />
                                <br/><br/><br/> <br/>
                             </div>
@@ -151,20 +157,20 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
                  
                         if (responses.menstrualflow === 1) {
                             menstrualflow =                 <div>
-                               <Typography id="discrete-slider" gutterBottom>
-                               menstrualflow <br/><br/><br/>
+                               <Typography variant="subtitle1" style= {{float: "left", textAlign: "left"}}>
+                               <b>Doesn't increase periods</b> <br/><br/><br/>
                                 </Typography>
                                 <Slider
-                                    defaultValue={3}
-                                    aria-labelledby="discrete-slider"
-                                    valueLabelDisplay="auto"
-                                    step={1}
-                                    min={0}
-                                    max={5}
-                                    valueLabelDisplay="on"
-                                    value={value}
-                                    onChange={handleChanges}
-                                    onClick={(e) => setWeightmenstrualflow(value)}
+                                                 defaultValue={0}
+                                                 onChange={(event, newValue) => setWeightnoHormones(newValue)}
+                                                 onChangeCommitted={handleChanges}
+                                                 step={1}
+                                                 min={0}
+                                                 max={5}
+                                                 valueLabelDisplay="on"
+                                                 value={value}   
+                                                 marks={marks}  
+
                                 />
                                <br/><br/><br/> <br/>
                             </div>
@@ -172,20 +178,20 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
 
                             if (responses.itprivate === 1) {
                                 itprivate =                 <div>
-                                   <Typography id="discrete-slider" gutterBottom>
-                                   itprivate <br/><br/><br/>
+                                   <Typography variant="subtitle1" style= {{float: "left", textAlign: "left"}}>
+                                  <b>Is easy to keep private</b>  <br/><br/><br/>
                                     </Typography>
                                     <Slider
-                                        defaultValue={3}
-                                        aria-labelledby="discrete-slider"
-                                        valueLabelDisplay="auto"
+                                        defaultValue={0}
+                                        onChange={(event, newValue) => setWeightitprivate(newValue)}
+                                        onChangeCommitted={handleChanges}
                                         step={1}
                                         min={0}
                                         max={5}
                                         valueLabelDisplay="on"
-                                        value={value}
-                                        onChange={handleChanges}
-                                        onClick={(e) => setWeightitprivate(value)}
+                                        value={value}   
+                                        marks={marks}  
+
                                     />
                                    <br/><br/><br/> <br/>
                                 </div>
@@ -193,20 +199,20 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
 
                             if (responses.discontinue === 1) {
                                 discontinue =                 <div>
-                                       <Typography id="discrete-slider" gutterBottom>
-                                       discontinue <br/><br/><br/>
+                                       <Typography variant="subtitle1" style= {{float: "left", textAlign: "left"}}>
+                                       <b>Is easy to stop at any time</b> <br/><br/><br/>
                                         </Typography>
                                         <Slider
-                                            defaultValue={3}
-                                            aria-labelledby="discrete-slider"
-                                            valueLabelDisplay="auto"
-                                            step={1}
-                                            min={0}
-                                            max={5}
-                                            valueLabelDisplay="on"
-                                            value={value}
-                                            onChange={handleChanges}
-                                            onClick={(e) => setWeightdiscontinue(value)}
+                                                defaultValue={0}
+                                                onChange={(event, newValue) => setWeightdiscontinue(newValue)}
+                                                onChangeCommitted={handleChanges}
+                                                step={1}
+                                                min={0}
+                                                max={5}
+                                                valueLabelDisplay="on"
+                                                value={value}   
+                                                marks={marks}  
+
                                         />
                                        <br/><br/><br/> <br/>
                                     </div>
@@ -218,7 +224,11 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
       
         
         <div className={styles.background}>
-        <p>hellox</p>
+        <Typography variant="h5"  >
+                Step 2: On a scale to 0 to 5 how important are these? </Typography>
+            <Typography variant="h6"  style= {{float: "left", textAlign: "left", paddingBottom: "30px"}}>
+                0 being the lowest (not important) and 5 the highest (extremly important) </Typography>
+                <br/>
         {effective}
         {hormone}
         {STD}

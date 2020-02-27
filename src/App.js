@@ -3,7 +3,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import Weightings from './components/Weightings';
 import ResultsPage from './components/multiStepForm/ResultsPage';
-
+import Reviewanswers from './components/multiStepForm/Reviewanswers';
 import MethodCard from './components/MethodCard';
 import IUD from'./components/MethodIcons/IUD.svg';
 import IUS from'./components/MethodIcons/IUS.svg';
@@ -491,7 +491,7 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
 
       var i = 0;
       for (i=0; i<methods.length; i++){
-        var this_test = methods[i].sortEffective * table.normalizedweighteffectiveness
+        var this_test = methods[i].sortEffective * table.normalizedweighteffectiveness;
         
         if (table.normalizedweightnoHormones > 0) {
           this_test += methods[i].sortHormones * table.normalizedweightnoHormones;}
@@ -559,15 +559,23 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
                                 methods={methods} />;
           break;
       case 3:
-    leftside = <ResultsPage table={table} 
-                            normalize={normalize} 
-                            weighting={weighting} 
-                            checkingScores={checkingScores} 
-                            table={table} 
-                            methods ={methods}
-                            methodsList={methodsList}
-                            setMethodsList={setMethodsList}
-                            responses = {responses}/>
+          leftside = <Reviewanswers responses={responses} 
+                                    weighting={weighting} 
+                                    addSteps={addSteps} 
+                                    checkingScores={checkingScores}
+                                    table={table}
+                                    methods={methods}/>;
+          break;
+      case 4:
+          leftside = <ResultsPage table={table} 
+                                  normalize={normalize} 
+                                  weighting={weighting} 
+                                  checkingScores={checkingScores} 
+                                  table={table} 
+                                  methods ={methods}
+                                  methodsList={methodsList}
+                                  setMethodsList={setMethodsList}
+                                  responses = {responses}/>
           break;   
       default:
         leftside = <Explanation addSteps={addSteps} addWeighting ={addWeighting}/>;
