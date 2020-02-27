@@ -86,6 +86,9 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
           sortItprivate: 1,
           sortDiscontinue: 0,
           finalScore: '',
+          explanation: "The implant releases the hormone progestogen (similar to the hormone progesterone that women produce naturally in their ovaries) into your bloodstream to prevent the egg being fertilised by the sperm.",
+          where:'The implant needs to be fitted by a specially trained doctor or nurse. It is available free of charge from contraceptive clinics, your GP'
+
       },
       {
           title: "IUS",
@@ -113,6 +116,9 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
           sortItprivate: 1,
           sortDiscontinue: 0,
           finalScore: '',
+          explanation: "The implant releases the hormone progestogen (similar to the hormone progesterone that women produce naturally in their ovaries) into your bloodstream to prevent the egg being fertilised by the sperm.",
+          where:'The implant needs to be fitted by a specially trained doctor or nurse. It is available free of charge from contraceptive clinics, your GP'
+
       },
       
       {
@@ -140,6 +146,10 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
           sortItprivate: 1,
           sortDiscontinue: 0,
           finalScore: '',
+          explanation: "The implant releases the hormone progestogen (similar to the hormone progesterone that women produce naturally in their ovaries) into your bloodstream to prevent the egg being fertilised by the sperm.",
+          where:'The implant needs to be fitted by a specially trained doctor or nurse. It is available free of charge from contraceptive clinics, your GP'
+
+
       },
      
       {
@@ -167,6 +177,9 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
         sortItprivate: 0,
         sortDiscontinue: 1,
         finalScore: '',
+        explanation: "The implant releases the hormone progestogen (similar to the hormone progesterone that women produce naturally in their ovaries) into your bloodstream to prevent the egg being fertilised by the sperm.",
+        where:'The implant needs to be fitted by a specially trained doctor or nurse. It is available free of charge from contraceptive clinics, your GP'
+
     },
    
     {
@@ -194,6 +207,9 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
       sortItprivate: 0,
       sortDiscontinue: 1,
       finalScore: '',
+      explanation: "The implant releases the hormone progestogen (similar to the hormone progesterone that women produce naturally in their ovaries) into your bloodstream to prevent the egg being fertilised by the sperm.",
+      where:'The implant needs to be fitted by a specially trained doctor or nurse. It is available free of charge from contraceptive clinics, your GP'
+
   },    
 
     {
@@ -221,6 +237,9 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
       sortItprivate: 1,
       sortDiscontinue: 0,
       finalScore: '',
+      explanation: "The implant releases the hormone progestogen (similar to the hormone progesterone that women produce naturally in their ovaries) into your bloodstream to prevent the egg being fertilised by the sperm.",
+      where:'The implant needs to be fitted by a specially trained doctor or nurse. It is available free of charge from contraceptive clinics, your GP'
+
   },    
 
   {
@@ -248,6 +267,9 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
     sortItprivate: 1,
     sortDiscontinue: 1,
     finalScore: '',
+    explanation: "The implant releases the hormone progestogen (similar to the hormone progesterone that women produce naturally in their ovaries) into your bloodstream to prevent the egg being fertilised by the sperm.",
+    where:'The implant needs to be fitted by a specially trained doctor or nurse. It is available free of charge from contraceptive clinics, your GP'
+
 },    
 
   {
@@ -275,6 +297,9 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
     sortItprivate: 0,
     sortDiscontinue: 1,
     finalScore: '',
+    explanation: "The implant releases the hormone progestogen (similar to the hormone progesterone that women produce naturally in their ovaries) into your bloodstream to prevent the egg being fertilised by the sperm.",
+    where:'The implant needs to be fitted by a specially trained doctor or nurse. It is available free of charge from contraceptive clinics, your GP'
+
   },  
 
   {
@@ -302,6 +327,9 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
     sortItprivate: 0,
     sortDiscontinue: 1,
     finalScore: '',
+    explanation: "The implant releases the hormone progestogen (similar to the hormone progesterone that women produce naturally in their ovaries) into your bloodstream to prevent the egg being fertilised by the sperm.",
+    where:'The implant needs to be fitted by a specially trained doctor or nurse. It is available free of charge from contraceptive clinics, your GP'
+
   },   
 
   {
@@ -329,6 +357,9 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
     sortItprivate: 0,
     sortDiscontinue: 1,
     finalScore: '',
+    explanation: "The implant releases the hormone progestogen (similar to the hormone progesterone that women produce naturally in their ovaries) into your bloodstream to prevent the egg being fertilised by the sperm.",
+    where:'The implant needs to be fitted by a specially trained doctor or nurse. It is available free of charge from contraceptive clinics, your GP'
+
   }, 
 
   {
@@ -356,6 +387,10 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
     sortItprivate: 0,
     sortDiscontinue: 1,
     finalScore: '',
+    explanation: "The implant releases the hormone progestogen (similar to the hormone progesterone that women produce naturally in their ovaries) into your bloodstream to prevent the egg being fertilised by the sperm.",
+    where:'The implant needs to be fitted by a specially trained doctor or nurse. It is available free of charge from contraceptive clinics, your GP'
+    
+
   }, 
 
   {
@@ -383,6 +418,8 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
     sortItprivate: 0,
     sortDiscontinue: 1,
     finalScore: '',
+    explanation: "The implant releases the hormone progestogen (similar to the hormone progesterone that women produce naturally in their ovaries) into your bloodstream to prevent the egg being fertilised by the sperm.",
+    where:'The implant needs to be fitted by a specially trained doctor or nurse. It is available free of charge from contraceptive clinics, your GP'
   }, 
     ]
   );
@@ -491,30 +528,18 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
 
       var i = 0;
       for (i=0; i<methods.length; i++){
-        var this_test = methods[i].sortEffective * table.normalizedweighteffectiveness;
-        
-        if (table.normalizedweightnoHormones > 0) {
-          this_test += methods[i].sortHormones * table.normalizedweightnoHormones;}
-
-        if (table.normalizedweightSTI > 0) {
-          this_test += methods[i].sortSTI * table.normalizedweightSTI;}
-
-        if (table.normalizedweightconsistencyperiods > 0) {
-          this_test += methods[i].sortConsistencyperiods * table.normalizedweightconsistencyperiods;}
-
-        if (table.normalizedweigthdiscontinue > 0) {
-          this_test += methods[i].sortDiscontinue * table.normalizedweigthdiscontinue;}
-
-        if (table.normalizedweightitprivate > 0) {
-          this_test += methods[i].sortItprivate * table.normalizedweightitprivate;}  
-
-        if (table.normalizedweightremember > 0) {
-                this_test += methods[i].sortResponses * table.normalizedweightremember;} 
-
-        if (table.normalizedweightmenstrualflow > 0) {
-                  this_test += methods[i].sortMenstrualflow * table.normalizedweightmenstrualflow;}  
-
-  
+        var this_test = (methods[i].sortEffective * table.normalizedweighteffectiveness 
+          + (methods[i].sortHormones * table.normalizedweightnoHormones)
+          + (methods[i].sortSTI * table.normalizedweightSTI)
+          + (methods[i].sortConsistencyperiods * table.normalizedweightconsistencyperiods)
+          + (methods[i].sortDiscontinue * table.normalizedweigthdiscontinue)
+          + (methods[i].sortItprivate * table.normalizedweightitprivate)
+          + (methods[1].sortRemember * table.normalizedweightremember)
+          + (methods[1].sortMenstrualflow * table.normalizedweightmenstrualflow )
+          );
+    
+        console.log('thistest')   
+        console.log(this_test) 
         methods[i].finalScore = this_test;
       };
     };
@@ -571,11 +596,8 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
                                   normalize={normalize} 
                                   weighting={weighting} 
                                   checkingScores={checkingScores} 
-                                  table={table} 
-                                  methods ={methods}
-                                  methodsList={methodsList}
-                                  setMethodsList={setMethodsList}
-                                  responses = {responses}/>
+                                  responses = {responses}
+                                  methods={methods}/>
           break;   
       default:
         leftside = <Explanation addSteps={addSteps} addWeighting ={addWeighting}/>;

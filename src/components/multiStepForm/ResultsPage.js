@@ -1,33 +1,50 @@
 import React, {useState} from 'react';
 import styles from '../Results.module.css'; 
-import MethodCard from '../MethodCard';
+import FinalMethodCard from '../FinalMethodCard';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
-function ResultsPage({table, normalize, weighting, checkingScores, methods, methodsList, responses, setMethodsList}){
-    const handleSubmit = (e) =>{
-         checkingScores({methods, table});
-     };
-     const calculating = (e) =>{
-        checkingScores({methods, table});
-    };
-
-     console.log('methodsList[1].finalScore')
-
-     console.log(methodsList[1].finalScore)
+function ResultsPage({ methods, responses, }){
+    
+    const [diaphragm, setDiaphragm] = useState(false);
+    const [List, setList] = useState(methods);
+      const addDiagpragm= (e)=>{
+         setDiaphragm(true);
+      }
      const sortBy = () => {
-        const sorted = [...methodsList].sort((a, b) => {
-          return b.methodsList.finalScore - a.methodsList.finalScore;
+        console.log(List)
+        const sorted = [...List].sort((a, b) => {
+          return b.finalScore - a.finalScore;
         });
-         setMethodsList(sorted);
+        setList(sorted);
       };    
  return(
-    <div  onLoad={handleSubmit} className={styles.background}>
-<p onClick={calculating}>helloo</p>
-<p onClick={sortBy}>onclick</p>
-{methodsList.map((method, index) => (
-              <div className={styles.column } key={index}>
-              <MethodCard key={index} index={index} method={method} responses={responses}/>
+    <div onMouseOver={sortBy} className={styles.background}>
+<Typography variant="h4" style= {{float: "left", textAlign: "left"}} >Your most fitting results are </Typography>
+      <div className={styles.row} >
+      <div className={styles.column2}> 
+            <Button variant="contained"  
+        style={{backgroundColor: "white",
+        textTransform: 'none', 
+        fontSize: "20PX",
+        float:"right"}}
+        onClick={addDiagpragm}
+        >  
+          Diaphragm
+                 </Button> 
+            </div>
+            <div className={styles.column}> 
+            {diaphragm ? <FinalMethodCard method={methods[1]} responses={responses}/> : "" }
+            </div>
+         {List.slice(0,3).map((method, index) => (
+              <div className={styles.column} key={index}>
+              <FinalMethodCard key={index} index={index} method={method} responses={responses}/>
               </div>
             ))}
+            
+           
+      </div> 
+      
     </div>
 
  )

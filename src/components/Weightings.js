@@ -162,7 +162,7 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
                                 </Typography>
                                 <Slider
                                                  defaultValue={0}
-                                                 onChange={(event, newValue) => setWeightnoHormones(newValue)}
+                                                 onChange={(event, newValue) => setWeightmenstrualflow(newValue)}
                                                  onChangeCommitted={handleChanges}
                                                  step={1}
                                                  min={0}

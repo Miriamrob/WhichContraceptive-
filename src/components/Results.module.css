@@ -6,3 +6,15 @@
     padding: 50px;
     background:white;
 }
+.column {
+    float: left;
+    width: 25%;
+    padding: 15px;
+  }
+  
+  /* Clear floats after the columns */
+  .row {
+    content: "";
+    display: table;
+    clear: both;
+  }
