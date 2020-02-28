@@ -19,10 +19,17 @@ import Pill2 from'./components/MethodIcons/pill2.svg';
 import Vaginalring from'./components/MethodIcons/vaginalring.svg';
 import Check from'./components/MethodIcons/check.svg';
 import Cross from'./components/MethodIcons/cross.png';
-
+import InformationalCard from './components/InformationalCard';
 import styles from './components/MethodCard.module.css'; 
 import MultipleChoice from './components/multiStepForm/MultipleChoice';
 import Explanation from './components/multiStepForm/Explanation';
+
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
 
 function App() {
   const [responses, setResponses] = useState([]);
@@ -61,6 +68,7 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
 
   const [methods] = useState([
       {
+          id:'IUD',
           title: "IUD",
           icon: <img  src={IUD}/>,
           effective: "99% Effective",
@@ -604,23 +612,44 @@ function addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightre
         break;
     }
 
-
+    const [open, setOpen] = useState(false);
     
+     
+      const handleClose = (e) => {
+        setOpen(false);
+      };
+ 
+      function openCard(open) {
+        setOpen({open});
+        };
+      const [methodtitle, setMethodtitle] = useState( 'IUS');
+
+      function themethodtitle(methodtitle){
+        setMethodtitle(methodtitle)
+      };
+
+      console.log('methodtitle')
+      console.log(methodtitle.methodtitle)
+      const methodis = methods.find(methodis => methodis.title === methodtitle);
+
     return(
     <div className="App">
       
         <NavBar />
-     
-        { console.log(table) }
+      
 
         
-        <div className={styles.container} >
+        <InformationalCard open={open} handleClose={handleClose} method={methodis} />
+
         
-       
+        <div className={styles.container}  >
+        
+      
+        
           <div className={styles.row} >
             {methodsList.map((method, index) => (
               <div className={styles.column } key={index}>
-              <MethodCard key={index} index={index} method={method} responses={responses}/>
+              <MethodCard key={index} index={index} method={method} responses={responses} openCard={openCard} themethodtitle={themethodtitle} />
               </div>
             ))}
           </div> 

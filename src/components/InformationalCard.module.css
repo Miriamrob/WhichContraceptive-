@@ -1,0 +1,34 @@
+
+
+.media {
+    height: 200px;
+    width: 200px;
+    background-color: #91A3EB;
+    float: left;
+    margin: 0px;
+    padding:0px;
+}
+
+
+.NoSTI{
+    background: #D83335;
+    color: white;
+}
+
+.STI{
+  background: green;
+  color: white;
+}
+.column {
+    width: 50%;
+    float: right;
+  }
+  .column2 {
+    float: right;
+    width: 50%;
+  } 
+  /* Clear floats after the columns */
+  .row {
+    clear: both;
+    margin: 0px;
+  }

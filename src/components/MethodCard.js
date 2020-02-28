@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styles from './MethodCard.module.css'; 
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
-function MethodCard({method, index, responses}) {
+function MethodCard({method, index, responses, openCard, themethodtitle}) {
   let hormone;
   let consistencyperiods;
   let menstrualflow;
@@ -37,13 +37,17 @@ function MethodCard({method, index, responses}) {
                 <hr/> {method.regularDiscontinue} &nbsp; {method.discontinue}
       </Typography>} else {  }      
 
-
-
-
+      const [open] = useState(true);
+      const [methodtitle] = useState(method.title);
+      const handleOpen = (e) =>{
+        openCard(open);
+        themethodtitle(methodtitle)
+      };
+ 
           return (
     
             <div  className={styles.card}>
-            <CardActionArea>
+            <CardActionArea onClick={handleOpen}>
               <CardMedia className={styles.media}>
                 {method.icon}
               </CardMedia>
