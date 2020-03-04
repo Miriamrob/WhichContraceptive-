@@ -10,7 +10,8 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
     const [weighteffectiveness, setWeightEffectiveness] = useState(0);
     const [weightSTI, setWeightSTI] = useState(0);
     const [weightremember, setWeightremember] = useState(0);
-    const [weightconsistencyperiods, setWeightconsistencyperiods] = useState(0);
+    const [weightregularperiods, setWeightregularperiods] = useState(0);
+    const [weightstopperiods, setWeightstopperiods] = useState(0);
     const [weightmenstrualflow, setWeightmenstrualflow] = useState(0);
     const [weightitprivate, setWeightitprivate] = useState(0);
     const [weigthdiscontinue, setWeightdiscontinue] = useState(0);
@@ -20,12 +21,12 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
    
     const handleChanges = (e) => {
         e.preventDefault();     
-        addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightremember, weightconsistencyperiods, weightmenstrualflow, weightitprivate, weigthdiscontinue );
+        addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightremember, weightregularperiods, weightstopperiods, weightmenstrualflow, weightitprivate, weigthdiscontinue );
       };
     const handleSubmit = (e) =>{
         e.preventDefault();
         addSteps(stepss);
-        addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightremember, weightconsistencyperiods, weightmenstrualflow, weightitprivate, weigthdiscontinue );
+        addWeighting(weighteffectiveness, weightnoHormones, weightSTI, weightremember, weightregularperiods, weightstopperiods, weightmenstrualflow, weightitprivate, weigthdiscontinue );
         normalize(weighting);
         
     };
@@ -35,7 +36,8 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
     let effective;
     let STD;
     let remember;
-    let consistencyperiods;
+    let regularperiods;
+    let stopperiods;
     let menstrualflow;
     let itprivate;
     let discontinue;
@@ -134,14 +136,14 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
                         </div>
                         } else {  };
 
-                        if (responses.consistencyperiods === 1) {
-                            consistencyperiods =                 <div>
+                        if (responses.regularperiods === 1) {
+                            regularperiods =                 <div>
                                <Typography variant="subtitle1" style= {{float: "left", textAlign: "left"}}>
                                <b>Makes/keeps periods regular</b> <br/><br/><br/>
                                 </Typography>
                                 <Slider
                                     defaultValue={0}
-                                    onChange={(event, newValue) => setWeightconsistencyperiods(newValue)}
+                                    onChange={(event, newValue) => setWeightregularperiods(newValue)}
                                     onChangeCommitted={handleChanges}
                                     step={1}
                                     min={0}
@@ -153,7 +155,27 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
                                 />
                                <br/><br/><br/> <br/>
                             </div>
-                            } else {  };                       
+                            } else {  };    
+                            if (responses.stopperiods === 1) {
+                                stopperiods =                 <div>
+                                   <Typography variant="subtitle1" style= {{float: "left", textAlign: "left"}}>
+                                   <b>Stops/ decreases periods</b> <br/><br/><br/>
+                                    </Typography>
+                                    <Slider
+                                        defaultValue={0}
+                                        onChange={(event, newValue) => setWeightstopperiods(newValue)}
+                                        onChangeCommitted={handleChanges}
+                                        step={1}
+                                        min={0}
+                                        max={5}
+                                        valueLabelDisplay="on"
+                                        value={value}   
+                                        marks={marks}  
+    
+                                    />
+                                   <br/><br/><br/> <br/>
+                                </div>
+                                } else {  };                     
                  
                         if (responses.menstrualflow === 1) {
                             menstrualflow =                 <div>
@@ -233,7 +255,8 @@ function Weightings({addSteps, responses, addWeighting, table, normalize, weight
         {hormone}
         {STD}
         {remember}
-        {consistencyperiods}
+        {regularperiods}
+        {stopperiods}
         {menstrualflow}
         {itprivate}
         {discontinue}

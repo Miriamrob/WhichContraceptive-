@@ -1,14 +1,29 @@
 
 
 .media {
-    height: 200px;
-    width: 200px;
+    height: 230px;
+    width: 230px;
     background-color: #91A3EB;
     float: left;
     margin: 0px;
-    padding:0px;
+    padding:0px;}
+
+  .smth{
+      right: 20px;
+      top: 20px;
+    
 }
 
+.backgroundtitle {
+  height: 25px;
+  background: #405196;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 1.7;
+  color: #FFFFFF;
+}
 
 .NoSTI{
     background: #D83335;
@@ -30,5 +45,4 @@
   /* Clear floats after the columns */
   .row {
     clear: both;
-    margin: 0px;
   }

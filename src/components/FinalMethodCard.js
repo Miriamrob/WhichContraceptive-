@@ -1,13 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styles from './FinalMethodCard.module.css'; 
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import Cross from './multiStepForm/cross.png'
+import CardActions from '@material-ui/core/CardActions';
 
-function MethodCard({method, index, responses}) {
+function MethodCard({method, index, responses, addclose}) {
   let hormone;
-  let consistencyperiods;
+  let regularperiods;
+  let stopperiods;
   let menstrualflow;
   let itprivate;
   let discontinue;
@@ -16,14 +19,14 @@ function MethodCard({method, index, responses}) {
                 
                 {method.hormonecheck} &nbsp; {method.hormones}
       </Typography>} else {  }
-  if (responses.consistencyperiods === 1) {
-    consistencyperiods = <Typography variant="h6" color="textPrimary" component="p" style={{paddingBottom: "10px"}}>
+  if (responses.regularperiods === 1) {
+    regularperiods = <Typography variant="h6" color="textPrimary" component="p" style={{paddingBottom: "10px"}}>
                 {method.regularCheck} &nbsp; {method.consistencyperiods}
-      </Typography>} else {  }    
-  if (responses.consistencyperiods === 0.5) {
-    consistencyperiods = <Typography variant="h6" color="textPrimary" component="p" style={{paddingBottom: "10px"}}>
-                 {method.stopCheck} &nbsp; {method.consistencyperiods}
-      </Typography>} else {  }    
+      </Typography>} else { 
+                regularperiods = <Typography variant="h6" color="textPrimary" component="p" style={{paddingBottom: "10px"}}>
+                {method.stopCheck} &nbsp; {method.consistencyperiods}
+        </Typography>
+       }       
   if (responses.menstrualflow === 0) {
     menstrualflow = <Typography variant="h6" color="textPrimary" component="p" style={{paddingBottom: "10px"}}>
                  {method.menstrualcheck} &nbsp; {method.menstrualflow}
@@ -36,15 +39,32 @@ function MethodCard({method, index, responses}) {
     discontinue = <Typography variant="h6" color="textPrimary" component="p" style={{paddingBottom: "10px"}}>
                {method.regularDiscontinue} &nbsp; {method.discontinue}
       </Typography>} else {  }      
-
-
+ const [diaphragm, setDiaphragm] = useState(false);
+ const [IUD, setIUD] = useState(false);
+ const [IUS, setIUS] = useState(false);
+ const [Pill1, setPill1] = useState(false);
+ const [Pill2, setPill2] = useState(false);
+ const [vaginalring, setvaginalring] = useState(false);
+ const [patch, setpatch] = useState(false);
+ const [condom, setcondom] = useState(false);
+ const [girlcondom, setgirlcondom] = useState(false);
+ const [implant, setimplant] = useState(false);
+ const [calendar, setcalendar] = useState(false);
+ const [inejction, setinjection] = useState(false);
+    const closeCard =(event)=>{
+      addclose(diaphragm, IUD, IUS, Pill1, Pill2, vaginalring, patch, condom, girlcondom, implant,calendar, inejction);
+    };
 
 
           return (
+           
     
-            <div  className={styles.card}>
-            <CardActionArea>
-              <CardMedia className={styles.media}>
+            <div  className={styles.card} >
+            <CardActionArea > 
+         
+            <img src={Cross} style={{ position: "absolute", top:"-15px", right:"-15px"}} onClick={() => closeCard(method.title)}/>
+              
+              <CardMedia className={styles.media} >
                 {method.icon}
               </CardMedia>
               
@@ -65,15 +85,20 @@ function MethodCard({method, index, responses}) {
                 </Typography>
                 
               
-
+                <Typography variant="h6" color="textPrimary" component="p" style={{paddingBottom: "10px"}}>
+                <b style= {{color:"#405196"}}>{method.effective} </b>
+                </Typography>
                 <Typography variant="h6" color="textPrimary" component="p" style={{paddingBottom: "10px"}}>
                 {method.remember}
                 </Typography>
                 <Typography variant="h6" color="textPrimary" component="p" style={{paddingBottom: "10px"}}>
-                {method.STI}
+                {method.STIcheck} &nbsp; {method.STI}
                 </Typography>
-                {hormone}
-                {consistencyperiods}
+                
+                
+               {hormone}
+                {regularperiods}
+                {stopperiods}
                 {menstrualflow}
                 {itprivate}
                 {discontinue}

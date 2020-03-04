@@ -9,12 +9,13 @@ import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 
-function MultipleChoice({addResponseeffectiveness,addResponsenoHormones, addResponseSTI, addResponseremember, addResponseconsistencyperiods, addResponsemenstrualflow, addResponseitprivate, addResponsediscontinue, addSortResponse, addSteps, addWeighting}) {
+function MultipleChoice({addResponsenoHormones, addResponseSTI, addResponseremember, addResponseregular, addResponsestop, addResponsemenstrualflow, addResponseitprivate, addResponsediscontinue, addSortResponse, addSteps, addWeighting}) {
     const [effectiveness] = useState(1);
     const [noHormones] = useState(1);
     const [STI] = useState(1);
     const [remember] = useState(1);
-    const [consistencyperiods] = useState(1);
+    const [stopperiods] = useState(1);
+    const [regularperiods] = useState(1);
     const [menstrualflow] = useState(1);
     const [itprivate] = useState(1);
     const [discontinue] = useState(1);
@@ -22,11 +23,6 @@ function MultipleChoice({addResponseeffectiveness,addResponsenoHormones, addResp
 
     const stepss = 2;
          
-    const funeffectiveness = (e) =>{
-        addResponseeffectiveness(effectiveness);
-        sortingWhat = 'effective';
-        addSortResponse(sortingWhat);
-    };
     const funnohormones = (e) =>{
         addResponsenoHormones(noHormones);
         sortingWhat = 'hormone';
@@ -42,9 +38,14 @@ function MultipleChoice({addResponseeffectiveness,addResponsenoHormones, addResp
         sortingWhat = 'remember';
         addSortResponse(sortingWhat);
     };
-    const funconsistency = (e) =>{
-        addResponseconsistencyperiods(consistencyperiods);
+    const funregular = (e) =>{
+        addResponseregular(regularperiods);
         sortingWhat = 'regularperiods';
+        addSortResponse(sortingWhat);
+    };
+    const funstop = (e) =>{
+        addResponsestop(stopperiods);
+        sortingWhat = 'stopperiods';
         addSortResponse(sortingWhat);
     };
     const funmenstrualflow = (e) =>{
@@ -106,32 +107,58 @@ function MultipleChoice({addResponseeffectiveness,addResponsenoHormones, addResp
                         <RadioGroup aria-label="remember" name="remember" >
                         <FormControlLabel value="1" control={<Radio color="primary"/>} onChange={funremember}  label="Yes" />
                         <FormControlLabel value="0" control={<Radio color="primary"/>}  label="Not an issue" />
-                        </RadioGroup>  
+                        </RadioGroup> 
                         <br/>
-                        <Typography variant="subtitle1" > <b> Do you want a method that alters your period? </b></Typography>
+                        <HtmlTooltip  title="Some methods can completly stop your period from happening while others will make it lighter or less frequent">
+                        <Typography variant="subtitle1" > <b> Do you want a method that <u style= {{color:"#405196"}}>reduces or stops</u> your period? </b></Typography>
+                        </HtmlTooltip> 
+
                         <RadioGroup aria-label="consistencyperiods" name="consistencyperiods" >
-                        <FormControlLabel value="0" control={<Radio color="primary"/>} onChange={funconsistency} label="I don’t want any periods" />
-                        <FormControlLabel value="1" control={<Radio color="primary"/>}   label="I want regular periods" />
-                        <FormControlLabel value="0.5" control={<Radio color="primary"/>} label="Not an issue" />
+                        <FormControlLabel value="1" control={<Radio color="primary"/>} onChange={funstop} label="Yes" />
+                        <FormControlLabel value="0" control={<Radio color="primary"/>}   label="Not an issue" />
                         </RadioGroup> 
+
                         <br/>
-                        <Typography variant="subtitle1" > <b> Do you mind having heavier periods? </b></Typography>
+                        <br/>
+                        <HtmlTooltip  title="Some methods can force your period to regulate while others will keep the natural cycle of your period">
+                        <Typography variant="subtitle1" > <b> Do you want a method that keeps your periods <u style= {{color:"#405196"}}>regular and consistent?</u>  </b></Typography>
+                        </HtmlTooltip>
+
+                        <RadioGroup aria-label="consistencyperiods" name="consistencyperiods" >
+                        <FormControlLabel value="1" control={<Radio color="primary"/>} onChange={funregular} label="Yes" />
+                        <FormControlLabel value="0" control={<Radio color="primary"/>} label="Not an issue" />
+                        </RadioGroup> 
+
+                        <br/>
+                        <HtmlTooltip  title="Some methods can make your periods heavier and more painful">
+                        <Typography variant="subtitle1" > <b> Do you mind having <u style= {{color:"#405196"}}>heavier periods?</u> </b></Typography>
+                        </HtmlTooltip>
+
                         <RadioGroup aria-label="menstrualflow" name="menstrualflow" >
-                        <FormControlLabel value="1" control={<Radio color="primary"/>} onChange={funmenstrualflow} label="I don’t mind" />
-                        <FormControlLabel value="0" control={<Radio color="primary"/>}  label="I mind, I want lighter periods" />
+                        <FormControlLabel value="1" control={<Radio color="primary"/>} onChange={funmenstrualflow} label="I mind" />
+                        <FormControlLabel value="0" control={<Radio color="primary"/>}  label="Not an issue"/>
                         </RadioGroup> 
+
                         <br/>
-                        <Typography variant="subtitle1" > <b> Do you want a method that is easy to keep private? </b></Typography>
+                        <HtmlTooltip  title="If you don't want anyone to know you are taking contraceptives, some methods will be easier to keep private than others">
+                        <Typography variant="subtitle1" > <b> Do you want a method that is easy to <u style= {{color:"#405196"}}>keep private</u>? </b></Typography>
+                        </HtmlTooltip>
+
                         <RadioGroup aria-label="itprivate" name="itprivate" >
                         <FormControlLabel value="1" control={<Radio color="primary"/>} onChange={funitprivate}  label="Yes" />
                         <FormControlLabel value="0" control={<Radio color="primary"/>} label="Not an issue" />
                         </RadioGroup> 
+
                         <br/>
-                        <Typography variant="subtitle1" > <b> Do you want a method that will be easy to remove if you wish to discontinue it? </b></Typography>
+                        <HtmlTooltip  title="Some methods will be easier to stop inmediatly than others that might require a GP or some time to loose their effect. This can be important if you are discontempt with the method or want to get pregnant soon">
+                        <Typography variant="subtitle1" > <b> Do you want a method that will be easy to remove or stop if you wish to <u style= {{color:"#405196"}}>discontinue</u> it? </b></Typography>
+                        </HtmlTooltip>
+
                         <RadioGroup aria-label="discontinue" name="discontinue" >
                         <FormControlLabel value="1" control={<Radio color="primary"/>} onChange={fundiscontinue} label="Yes" />
                         <FormControlLabel value="0" control={<Radio color="primary"/>}  label="Not an issue" />
                         </RadioGroup>
+
             </FormControl >
                
                <br/><br/>

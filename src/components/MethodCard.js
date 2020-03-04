@@ -16,7 +16,7 @@ function MethodCard({method, index, responses, openCard, themethodtitle}) {
                 <hr/> 
                 {method.hormonecheck} &nbsp; {method.hormones}
       </Typography>} else {  }
-  if (responses.consistencyperiods === 1) {
+  if (responses.regularperiods || responses.stopperiods=== 1) {
     consistencyperiods = <Typography variant="h6" color="textPrimary" component="p" style={{paddingBottom: "10px"}}>
                 <hr/> {method.regularCheck} &nbsp; {method.consistencyperiods}
       </Typography>} else {  }    
@@ -72,11 +72,15 @@ function MethodCard({method, index, responses, openCard, themethodtitle}) {
                 <Typography variant="h6" color="textPrimary" component="p" style={{paddingBottom: "10px"}}>
                 {method.remember}
                 </Typography>
-                {hormone}
+                <div className={styles.slideFade}>
+                  <div className={styles.show}> {hormone}</div>
+                
                 {consistencyperiods}
                 {menstrualflow}
                 {itprivate}
                 {discontinue}
+                </div>
+                
                 
                 
 

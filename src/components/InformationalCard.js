@@ -21,7 +21,6 @@ function InformationalCard({open, handleClose, method}) {
             <Dialog
             open={open}
             onClose={handleClose}
-            
           >
             
                     <DialogActions >
@@ -30,48 +29,70 @@ function InformationalCard({open, handleClose, method}) {
               </Button>
             </DialogActions>
             
-            <DialogTitle id="alert-dialog-title">{method.title}</DialogTitle>
+            <DialogTitle className={styles.backgroundtitle}>{method.title}</DialogTitle>
             <div>
               <div className={styles.row}>
-                  <div className={styles.media}>{method.icon}</div>
+                  <div className={styles.media}>
+                  <div className={styles.smth}>  
+                    {method.icon}
+                    </div>
+                    </div>
               
                   <div className={styles.column}>
-                    <DialogContentText id="alert-dialog-description">
+                    <Typography variant="h6" color="textPrimary" component="p">
+                      <br/>
                       {method.effective}
                       <br/>
+                      {method.remember}
+                      
+                      <br/>
+                      {method.STIcheck} &nbsp;
                       {method.STI}
                       <br/>
-                      {method.remember}
-                      <br/>
+                      {method.hormonecheck}  &nbsp;
                       {method.hormones}
+                      
                       <br/>
+                      {method.stopCheck} &nbsp;
                       {method.consistencyperiods}
                       <br/>
+                      {method.regularCheck} &nbsp;
                       {method.menstrualflow}
                       <br/>
+                      {method.privatecheck} &nbsp;
                       {method.itprivate}
                       <br/>
+                      {method.regularDiscontinue} &nbsp;
                       {method.discontinue}
-                    </DialogContentText>
+                    </Typography>
+  
                   </div>
               </div>
+              <div style={{padding: '20px'}}>
+              <DialogContentText  id="alert-dialog-description">
               <div className={styles.row}>
-              <div className={styles.column}>
-              <DialogContentText id="alert-dialog-description">
-                Let Google help apps determine location. This means sending anonymous location data to
-                Google, even when no apps are running.
+              
+              <hr/>
+             
+                <Typography variant="h7">
+                  <b>How it works</b></Typography>
+                 
+                  <Typography variant="body1">
+                  {method.explanation}
+                </Typography>
+                <hr/>
+              </div>
+              <Typography variant="h7">
+                  <b>Where to get it</b></Typography>
+              <div className={styles.row}>
+              <Typography variant="body1">
+              {method.where}
+              </Typography>
+              </div>
               </DialogContentText>
-              </div>
-              <div className={styles.column}>
-              <DialogContentText id="alert-dialog-description">
-                Let Google help apps determine location. This means sending anonymous location data to
-                Google, even when no apps are running.
-              </DialogContentText>
-              </div>
-              </div>
              
             </div>
-    
+            </div>
           </Dialog>
         )
     }

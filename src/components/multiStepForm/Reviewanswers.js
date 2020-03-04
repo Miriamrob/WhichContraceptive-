@@ -101,7 +101,7 @@ const stepss= 4;
         default:
             break;
     };
-    switch (weighting.weightconsistencyperiods) {
+    switch (weighting.weightregularperiods) {
         case 1:
             consistencyperiods = <Typography variant="h6">It is <b style= {{color:"#405196"}}>not that important</b>  for my method to <b>make/keep my periods regular</b></Typography>    
             break;
@@ -116,6 +116,25 @@ const stepss= 4;
                 break; 
         case 5:
             consistencyperiods = <Typography variant="h6">It is <b style= {{color:"#405196"}}>extremly important</b> for my method to <b>make/keep my periods regular</b></Typography>   
+                break; 
+        default:
+            break;
+    };
+    switch (weighting.weightstopperiods) {
+        case 1:
+            consistencyperiods = <Typography variant="h6">It is <b style= {{color:"#405196"}}>not that important</b>  for my method to <b>stop/lighten my periods </b></Typography>    
+            break;
+        case 2:
+            consistencyperiods = <Typography variant="h6">It is <b style= {{color:"#405196"}}>somewhat important</b> for my method to <b>stop/lighten my periods</b></Typography>   
+            break;
+        case 3:
+            consistencyperiods = <Typography variant="h6">It is <b style= {{color:"#405196"}}>important</b> for my method to <b>stop/lighten my periods</b></Typography>   
+                break; 
+        case 4:
+            consistencyperiods = <Typography variant="h6">It is <b style= {{color:"#405196"}}>very important</b> for my method to <b>stop/lighten my periods</b></Typography>   
+                break; 
+        case 5:
+            consistencyperiods = <Typography variant="h6">It is <b style= {{color:"#405196"}}>extremly important</b> for my method to <b>stop/lighten my periods</b></Typography>   
                 break; 
         default:
             break;
@@ -141,10 +160,10 @@ const stepss= 4;
     };
     switch (weighting.weightitprivate) {
         case 1:
-            itprivate = <span> <img  src={tick}/> <Typography variant="h6"> <b> Easy to keep private</b> : not that important</Typography>  </span>    
+            itprivate = <span>  <Typography variant="h6"> It is<b style= {{color:"#405196"}}> not that important</b> be easy to keep private</Typography>  </span>    
             break;
         case 2:
-            itprivate = <span> <img  src={tick}/> <Typography variant="h6"> <b> Easy to stop at any time</b> : somewhat important</Typography>  </span>   
+            itprivate = <span>  <Typography variant="h6">It is <b style= {{color:"#405196"}}> somewhat important</b>be easy to keep private</Typography>  </span>   
             break;
         case 3:
             itprivate = <Typography variant="h6">It is <b style= {{color:"#405196"}}>important</b> for my method to <b>be easy to keep private</b></Typography>   
@@ -160,22 +179,21 @@ const stepss= 4;
     };
     switch (weighting.weigthdiscontinue) {
         case 1:
-            discontinue =   <span> <img  src={tick}/> <Typography variant="h6"> <b> Easy to stop </b> : not that important</Typography>  </span> 
+            discontinue =   <span>  <Typography variant="h6">It is <b style= {{color:"#405196"}}> not that important</b>for my method to <b>be easy to stop</b></Typography>  </span> 
             break;
         case 2:
-            discontinue =   <span> <img  src={tick}/> <Typography variant="h6"> <b> Easy to stop </b> : somewhat important</Typography>  </span>
+            discontinue =   <span> <Typography variant="h6">It is <b style= {{color:"#405196"}}> somewhat important </b>for my method to <b>be easy to stop</b></Typography>  </span>
             break;
         case 3:
-            discontinue = <span> <img  src={tick}/> <Typography variant="h6"> <b> Easy to stop </b> : important</Typography>  </span>
+            discontinue = <span><Typography variant="h6">It is<b style= {{color:"#405196"}}> important </b>for my method to <b>be easy to stop</b></Typography>  </span>
                 break; 
         case 4:
-            discontinue =  <span> <img  src={tick}/> <Typography variant="h6"> <b> Easy to stop </b> :  very important</Typography>  </span>
+            discontinue =  <span>  <Typography variant="h6">It is<b style= {{color:"#405196"}}> very important </b>for my method to <b>be easy to stop</b></Typography>  </span>
                 break; 
         case 5:
-            discontinue = <span> <img  src={tick}/> <Typography variant="h6"> <b> Easy to stop </b> : extremly important</Typography>  </span>  
+            discontinue = <span>  <Typography variant="h6">It is <b style= {{color:"#405196"}}> extremly important </b>for my method to <b>be easy to stop</b></Typography>  </span>  
                 break; 
         default:
-            discontinue =  <span> {check}<Typography variant="h6"> <b> Easy to stop </b> : not an issue</Typography>  </span> 
             break;
     };
 
